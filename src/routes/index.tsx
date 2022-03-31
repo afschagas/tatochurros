@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { CardapioLista, Dashboard } from '../pages';
+import { CardapioLista, Dashboard, Pedido } from '../pages';
 
 import { useDrawerContext } from '../shared/contexts';
 
@@ -19,6 +19,11 @@ export const AppRoutes = () => {
         icon: 'restaurantmenu',
         path: '/cardapio',
         label: 'Cardápio',
+      },
+      {
+        icon: 'add',
+        path: '/pedido',
+        label: 'Pedido',
       }
     ]);
 
@@ -32,6 +37,7 @@ export const AppRoutes = () => {
       <Route path='/pagina-inicial' element={<Dashboard />} />
 
       <Route path='/cardapio' element={<CardapioLista />} />
+      <Route path='/pedido' element={<Pedido />} />
 
       <Route path='*' element={<Navigate to='/pagina-inicial' />} />
     </Routes>
@@ -39,4 +45,4 @@ export const AppRoutes = () => {
 
 };
 
-// Route path='*' - Faz um redirect da pagina
+// Route path='*' - Faz um redirect para pagina principal

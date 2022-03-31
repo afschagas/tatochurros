@@ -9,6 +9,9 @@
     "datatables",
     "esnext",
     "firefox",
-    "restaurantmenu"
+    "formulario",
+    "Formulario",
+    "restaurantmenu",
+    "toastify"
   ]
 }
