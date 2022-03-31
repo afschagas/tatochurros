@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/styles';
 
 //Lib
 import { toast } from 'react-toastify';
+import InputMask from 'react-input-mask';
 
 
 const useStyles = makeStyles({
@@ -24,9 +25,14 @@ export const Formulario: React.FC = () => {
 
   //Estado dos Inputs
   const [nome, setNome] = useState<any>('');
+  const [endereco, setEndereco] = useState<any>('');
+  const [phone, setPhone] = useState<any>('');
+  console.log(phone);
 
   // Estado de erro no Inputs
   const [nomeError, setNomeError] = useState(false);
+  const [enderecoError, setEnderecoError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
 
   // Inputs de Seleção
   const [churros, setChurros] = useState();
@@ -39,10 +45,15 @@ export const Formulario: React.FC = () => {
   const handleSubmit = (event: any) => {
     event.preventDefault()
     setNomeError(false)
-    LimpaCampos()
+    setEnderecoError(false)
+    setPhoneError(false)
+
+
 
     if (nome === '') {
       setNomeError(true)
+      setEnderecoError(true)
+      setPhoneError(true)
       toast.warn('Preencha os campos em vermelho.', {
         autoClose: 5000,
       });
@@ -50,13 +61,34 @@ export const Formulario: React.FC = () => {
 
     }
 
+    if (endereco === '') {
+      setNomeError(true)
+      setEnderecoError(true)
+      setPhoneError(true)
+      toast.warn('Preencha os campos em vermelho.', {
+        autoClose: 5000,
+      });
+      return;
+
+    }
+
+    if (phone === '') {
+      setNomeError(true)
+      setEnderecoError(true)
+      setPhoneError(true)
+      toast.warn('Preencha os campos em vermelho.', {
+        autoClose: 5000,
+      });
+      return;
+
+    }
 
     if (nome !== '') {
       setNomeError(false)
       toast.success('Pedido Realizado.', {
         autoClose: 5000,
-
       });
+
 
       console.log(nome)
     }
@@ -93,19 +125,29 @@ export const Formulario: React.FC = () => {
         />
 
         <TextField
+          onChange={(event: any) => setEndereco(event.target.value)}
           className={classes.field}
           label="Endereço"
           variant='outlined'
           required
+          error={enderecoError}
         />
 
-        <TextField
-          className={classes.field}
-          label="Telefone"
-          type="number"
-          variant='outlined'
-          required
-        />
+        <InputMask
+          mask="(11) 99999 9999"
+          value={phone}
+          disabled={false}
+
+          onChange={(event: any) => setPhone(event.target.value)}
+        >
+          {() => <TextField
+            className={classes.field}
+            label="Telefone"
+            variant='outlined'
+            required
+            error={phoneError}
+          />}
+        </InputMask>
 
         <Typography
           variant='h6'
@@ -116,7 +158,7 @@ export const Formulario: React.FC = () => {
           Doce
         </Typography>
         <br></br>
-        <FormControl sx={{ m: 0.2, width: '35ch' }}>
+        <FormControl sx={{ m: 0.2, width: '32.7ch' }}>
           <InputLabel>Churros</InputLabel>
           <Select
 
@@ -137,7 +179,7 @@ export const Formulario: React.FC = () => {
 
         </FormControl>
 
-        <FormControl sx={{ m: 0.2, width: '42.7ch' }}>
+        <FormControl sx={{ m: 0.2, width: '32.7ch' }}>
           <InputLabel>Cobertura</InputLabel>
           <Select
 
@@ -157,7 +199,8 @@ export const Formulario: React.FC = () => {
 
           </Select>
         </FormControl>
-
+        <br></br>
+        <br></br>
         <Typography
           variant='h6'
           color='textSecondary'
@@ -167,7 +210,7 @@ export const Formulario: React.FC = () => {
           Salgado
         </Typography>
         <br></br>
-        <FormControl sx={{ m: 0.2, width: '35ch' }}>
+        <FormControl sx={{ m: 0.2, width: '32.7ch' }}>
           <InputLabel>Churros</InputLabel>
           <Select
 
@@ -190,7 +233,7 @@ export const Formulario: React.FC = () => {
 
         </FormControl>
 
-        <FormControl sx={{ m: 0.2, width: '42.7ch' }}>
+        <FormControl sx={{ m: 0.2, width: '32.7ch' }}>
           <InputLabel>Cobertura</InputLabel>
           <Select
 
@@ -205,8 +248,10 @@ export const Formulario: React.FC = () => {
             <MenuItem value={4} >Presunto</MenuItem>
 
           </Select>
+          <br></br>
+          <br></br>
         </FormControl>
-
+        <br></br>
         <br></br>
         <Button
           type="submit"
@@ -218,6 +263,7 @@ export const Formulario: React.FC = () => {
 
 
       </form>
+
 
     </Container>
 
