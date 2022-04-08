@@ -36,10 +36,10 @@ export const CardapioLista: React.FC = () => {
           Consulte a lista de sabores abaixo.
         </Typography>
 
-
+        <ResultsTable />
       </Box>
 
-      <ResultsTable />
+
     </LayoutBaseDePagina>
 
 

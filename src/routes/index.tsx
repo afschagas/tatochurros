@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { CardapioLista, Dashboard, Pedido } from '../pages';
+import { CardapioLista, Dashboard, Pedido, ListaDePedido } from '../pages';
 
 import { useDrawerContext } from '../shared/contexts';
 
@@ -24,6 +24,11 @@ export const AppRoutes = () => {
         icon: 'add',
         path: '/pedido',
         label: 'Pedido',
+      },
+      {
+        icon: 'listalt',
+        path: '/listadepedido',
+        label: 'ListaDePedido',
       }
     ]);
 
@@ -38,6 +43,7 @@ export const AppRoutes = () => {
 
       <Route path='/cardapio' element={<CardapioLista />} />
       <Route path='/pedido' element={<Pedido />} />
+      <Route path='/listadepedido' element={<ListaDePedido />} />
 
       <Route path='*' element={<Navigate to='/pagina-inicial' />} />
     </Routes>

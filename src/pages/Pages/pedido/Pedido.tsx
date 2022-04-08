@@ -4,6 +4,8 @@ import { LayoutBaseDePagina } from '../../../shared/layouts';
 import { CardBannerPedido } from '../../../shared/components/card-box/CardBannerPedido';
 import { Formulario } from '../../../shared/components/formulario/Formulario';
 
+//import { Teste } from '../../../shared/components/formulario/Teste';
+
 
 export const Pedido: React.FC = () => {
 
